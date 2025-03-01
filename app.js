@@ -45,7 +45,7 @@ const setupMiddleWares = () => {
     app.use(express.urlencoded({ extended: true }));
 
     app.use(express.static(path.join(__dirname, "../evo-client/dist")));
-    app.get(["*"], (req, res) => {
+    app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, "../evo-client/dist/index.html"));
     });
 }
@@ -58,10 +58,10 @@ const setupRoutes = () => {
 const startApp = async () => {
     await setupDb();
     await firstTimeStart();
+    setupSwaggerDocs();
     setupMiddleWares();
     setupServices();
     setupRoutes();
-    setupSwaggerDocs();
     const server = setupServer();
 
     server.listen(config.development.port, startServer);
