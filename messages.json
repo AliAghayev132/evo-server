@@ -1,0 +1,24 @@
+{
+    "success": {
+        "S200": "Request successful",
+        "S201": "Created successfully",
+        "S202": "Updated successfully",
+        "S204": "No content available"
+    },
+    "error": {
+        "E400": "Bad request",
+        "E401": "Unauthorized access",
+        "E404": "Not found",
+        "E403": "Invalid credentials",
+        "E406": "File is missing",
+        "E405": "File upload problem",
+        "E500": "Internal server error"
+    },
+    "validation": {
+        "V100": "Validation error: Missing fields",
+        "V101": "Validation error: Invalid email format",
+        "V102": "Validation error: Invalid phone number format",
+        "V103": "Validation error: Invalid password format",
+        "V104": "Validation error: New password and old password can not be same"
+    }
+}
