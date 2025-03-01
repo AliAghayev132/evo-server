@@ -143,7 +143,6 @@ class ValidatorService {
             message: errors.length > 0 ? errors.join(' ') : "Event is valid."
         };
     }
-
     static validateVacancy(vacancy) {
         const errors = [];
 
@@ -158,6 +157,34 @@ class ValidatorService {
         return {
             isValid: errors.length === 0,
             message: errors.length > 0 ? errors.join(' ') : "Vacancy is valid."
+        };
+    }
+    static validateGraduate(graduate) {
+        const errors = [];
+
+        if (!graduate.firstName || typeof graduate.firstName !== 'string') {
+            errors.push("First name is required and must be a string.");
+        }
+
+        if (!graduate.secondName || typeof graduate.secondName !== 'string') {
+            errors.push("Second name is required and must be a string.");
+        }
+
+        if (!graduate.title || typeof graduate.title !== 'string') {
+            errors.push("Title is required and must be a string.");
+        }
+
+        if (!graduate.comment || typeof graduate.comment !== 'string') {
+            errors.push("Comment is required and must be a string.");
+        }
+
+        if (graduate.socialMedia && typeof graduate.socialMedia !== 'string') {
+            errors.push("Social media must be a string if provided.");
+        }
+
+        return {
+            isValid: errors.length === 0,
+            message: errors.length > 0 ? errors.join(' ') : "Graduate is valid."
         };
     }
 }

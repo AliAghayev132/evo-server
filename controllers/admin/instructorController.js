@@ -18,9 +18,6 @@ const addInstructor = async (req, res) => {
             return res.status(400).json({ success: false, message });
         }
 
-        console.log({ message });
-
-
         if (!image) {
             return res.status(400).json({ success: false, message: MessagesService.error.E404 });
         }
@@ -47,7 +44,6 @@ const addInstructor = async (req, res) => {
         return res.status(500).json({ success: false, message: MessagesService.error.E500 });
     }
 };
-
 // Eğitmen Silme
 const deleteInstructor = async (req, res) => {
     try {
@@ -66,7 +62,6 @@ const deleteInstructor = async (req, res) => {
         return res.status(500).json({ success: false, message: MessagesService.error.E500 });
     }
 };
-
 const restoreInstructor = async (req, res) => {
     try {
         const { id } = req.params;
@@ -84,7 +79,6 @@ const restoreInstructor = async (req, res) => {
         return res.status(500).json({ success: false, message: MessagesService.error.E500 });
     }
 };
-
 // Eğitmen Düzenleme
 const editInstructor = async (req, res) => {
     try {
@@ -101,6 +95,9 @@ const editInstructor = async (req, res) => {
         if (!updatedInstructor) {
             return res.status(404).json({ success: false, message: MessagesService.error.E404 });
         }
+        
+        console.log({image});
+        
 
         if (image) {
             const uploadedFile = await FileUploadService.Upload({
@@ -124,7 +121,6 @@ const editInstructor = async (req, res) => {
         return res.status(500).json({ success: false, message: MessagesService.error.E500 });
     }
 };
-
 // Tüm Eğitmenleri Alma
 const getAllInstructors = async (req, res) => {
     try {
@@ -134,7 +130,6 @@ const getAllInstructors = async (req, res) => {
         return res.status(500).json({ success: false, message: MessagesService.error.E500 });
     }
 };
-
 const getAllInstructorsIncludingDeleted = async (req, res) => {
     try {
         const instructors = await Instructor.find();

@@ -15,6 +15,7 @@ const handleFileName = ({ file, newName }) => {
     if (!newName) throw new Error("Yeni dosya adı geçerli değil.");
 
     const fileExtension = path.extname(file.name);
+
     return `${newName}_${Date.now()}${fileExtension}`;
 };
 

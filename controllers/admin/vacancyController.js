@@ -18,24 +18,25 @@ const addVacancy = async (req, res) => {
 
         const image = req?.files?.image;
 
-        
-        
         if (!image) {
             return res.status(400).json({ success: false, message: MessagesService.error.E404 });
         }
 
         const newVacancy = new Vacancy(req.body);
+
         const uploadedFile = await FileUploadService.Upload({
             file: image,
             uploadPath: vacancyPath,
             newName: newVacancy._id,
         });
 
+        console.log(newVacancy)
 
 
         if (!uploadedFile.success) {
             return res.status(400).json({ success: false, message: MessagesService.error.E405 });
         }
+        
 
         newVacancy.imageUrl = image.name;
         await newVacancy.save();
@@ -102,7 +103,7 @@ const editVacancy = async (req, res) => {
 };
 const getAllVacancies = async (req, res) => {
     try {
-        const vacancies = await Vacancy.find({ isDeleted: false });
+        const vacancies = await Vacancy.find();
         return res.status(200).json({ success: true, vacancies });
     } catch (error) {
         return res.status(500).json({ success: false, message: MessagesService.error.E500 });

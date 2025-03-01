@@ -21,7 +21,7 @@ import startServer from "#utils/server/startServer.js";
 import { firstTimeStart } from "#utils/admin/firstTimeStart.js";
 
 // Routers
-// import { UserRouter } from "#routes/userRoutes.js";
+import { MiscRouter } from "#routes/miscRoutes.js";
 import { AdminRouter } from "#routes/adminRoutes.js";
 
 // Variables
@@ -44,14 +44,14 @@ const setupMiddleWares = () => {
     app.use('/public', express.static('public'));
     app.use(express.urlencoded({ extended: true }));
 
-    app.use(express.static(path.join(__dirname, "../coffeeme-admin-client/dist")));
+    app.use(express.static(path.join(__dirname, "../evo-client/dist")));
     app.get(["/admin", "/admin/*"], (req, res) => {
-        res.sendFile(path.resolve(__dirname, "../coffeeme-admin-client/dist/index.html"));
+        res.sendFile(path.resolve(__dirname, "../evo-client/dist/index.html"));
     });
 }
 
 const setupRoutes = () => {
-    // app.use("/api/user", UserRouter);
+    app.use("/api/misc", MiscRouter);
     app.use("/api/admin", AdminRouter);
 }
 

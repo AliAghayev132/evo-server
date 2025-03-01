@@ -6,6 +6,7 @@ import { EventRouter } from "./admin/eventRoutes.js";
 import { CourseRouter } from "./admin/courseRoutes.js";
 import { InstructorRouter } from "./admin/instructorRoutes.js";
 import { VacancyRouter } from "./admin/vacancyRoutes.js";
+import { GraduateRouter } from "./admin/graduateRoutes.js";
 
 
 /**
@@ -27,6 +28,10 @@ import { VacancyRouter } from "./admin/vacancyRoutes.js";
  *           type: string
  *           example: "public/uploads/instructors"
  *           description: Eğitmenler üçün dosya yükleme yolu
+ *         graduatesPath:
+ *           type: string
+ *           example: "public/uploads/graduates"
+ *           description: Məzunlar üçün 
  */
 
 
@@ -36,6 +41,7 @@ AdminRouter.use("/auth", AuthRouter);
 AdminRouter.use("/events", EventRouter);
 AdminRouter.use("/courses", CourseRouter);
 AdminRouter.use("/vacancies", VacancyRouter);
+AdminRouter.use("/graduates", GraduateRouter);
 AdminRouter.use("/instructors", InstructorRouter);
 
 
