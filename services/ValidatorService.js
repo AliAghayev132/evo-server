@@ -91,6 +91,10 @@ class ValidatorService {
             errors.push("Syllabus must be an array of objects with title and description as strings.");
         }
 
+        if (!Array.isArray(course.tags) || !course.tags.length > 0 || course.tags.some(item => typeof item !== 'string')) {
+            errors.push("Tags must be an array of strings.");
+        }
+
         if (course.imageUrl && typeof course.imageUrl !== 'string') {
             errors.push("Image URL must be a string if provided.");
         }
@@ -149,11 +153,11 @@ class ValidatorService {
         if (!vacancy.description || typeof vacancy.description !== 'string') {
             errors.push("Description is required and must be a string.");
         }
-        
+
         if (!vacancy.title || typeof vacancy.title !== 'string') {
             errors.push("Title is required and must be a string.");
         }
-        
+
         if (!Number.isInteger(vacancy.experienceYears) || vacancy.experienceYears < 0) {
             errors.push("Experience years is required and must be a non-negative integer.");
         }
@@ -162,7 +166,7 @@ class ValidatorService {
             errors.push("Requirements must be an array of strings.");
         }
 
-        
+
         if (!Array.isArray(vacancy.duties) || !vacancy.duties.length > 0 || vacancy.duties.some(req => typeof req !== 'string')) {
             errors.push("Duties must be an array of strings.");
         }

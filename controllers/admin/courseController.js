@@ -14,7 +14,7 @@ const addCourse = async (req, res) => {
         const image = req.files?.image;
 
         if (!isValid) {
-            return res.status(400).json({ success: false, message: MessagesService.validation.V100 });
+            return res.status(400).json({ success: false, message });
         }
 
         if (!image) {

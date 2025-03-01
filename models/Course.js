@@ -87,6 +87,10 @@ const courseSchema = new Schema({
         type: String,
         required: true
     },
+    tags: {
+        type: [String],
+        required: true
+    },
     instructors: [{
         type: Schema.Types.ObjectId,
         ref: 'Instructor'
