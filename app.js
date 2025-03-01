@@ -45,7 +45,7 @@ const setupMiddleWares = () => {
     app.use(express.urlencoded({ extended: true }));
 
     app.use(express.static(path.join(__dirname, "../evo-client/dist")));
-    app.get(["/admin", "/admin/*"], (req, res) => {
+    app.get(["*"], (req, res) => {
         res.sendFile(path.resolve(__dirname, "../evo-client/dist/index.html"));
     });
 }
