@@ -174,9 +174,14 @@ class ValidatorService {
             errors.push("Title is required and must be a string.");
         }
 
+        if (!graduate.employer || typeof graduate.employer !== 'string') {
+            errors.push("Employer is required and must be a string.");
+        }
+
         if (!graduate.comment || typeof graduate.comment !== 'string') {
             errors.push("Comment is required and must be a string.");
         }
+
 
         if (graduate.socialMedia && typeof graduate.socialMedia !== 'string') {
             errors.push("Social media must be a string if provided.");

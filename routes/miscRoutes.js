@@ -1,10 +1,7 @@
 // Variables
 import { Router } from "#constants/variables.js";
 // Controllers
-import vacancyController from "#controllers/admin/vacancyController.js";
-import eventController from "#controllers/admin/eventController.js";
-import courseController from "#controllers/admin/courseController.js";
-import instructorController from "#controllers/admin/instructorController.js";
+import miscController from "#controllers/misc/miscController.js";
 
 const MiscRouter = Router();
 
@@ -28,7 +25,7 @@ const MiscRouter = Router();
  *       500:
  *         description: Server xətası
  */
-MiscRouter.get('/vacancies', vacancyController.getAllVacancies);
+MiscRouter.get('/vacancies', miscController.getVacancies);
 
 /**
  * @swagger
@@ -43,7 +40,7 @@ MiscRouter.get('/vacancies', vacancyController.getAllVacancies);
  *       500:
  *         description: Server xətası
  */
-MiscRouter.get('/events', eventController.getAllEvents);
+MiscRouter.get('/events', miscController.getEvents);
 
 /**
  * @swagger
@@ -58,7 +55,7 @@ MiscRouter.get('/events', eventController.getAllEvents);
  *       500:
  *         description: Server xətası
  */
-MiscRouter.get('/courses', courseController.getAllCourses);
+MiscRouter.get('/courses', miscController.getCourses);
 
 /**
  * @swagger
@@ -73,6 +70,22 @@ MiscRouter.get('/courses', courseController.getAllCourses);
  *       500:
  *         description: Server xətası
  */
-MiscRouter.get('/instructors', instructorController.getAllInstructors);
+MiscRouter.get('/instructors', miscController.getInstructors);
+
+/**
+ * @swagger
+ * /misc/graduates:
+ *   get:
+ *     summary: Tüm Mezunları Al
+ *     description: Tüm mezunları alır.
+ *     tags: [Misc]
+ *     responses:
+ *       200:
+ *         description: Tüm mezunlar uğurla alındı
+ *       500:
+ *         description: Server xətası
+ */
+MiscRouter.get('/graduates', miscController.getGraduates);
+
 
 export { MiscRouter };

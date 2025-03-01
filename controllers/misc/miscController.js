@@ -2,6 +2,7 @@
 import Event from "#models/Event.js";
 import Course from "#models/Course.js";
 import Vacancy from "#models/Vacancy.js";
+import Graduate from "#models/Graduate.js";
 import Instructor from "#models/Instructor.js";
 
 const getEvents = async (req, res) => {
@@ -40,4 +41,13 @@ const getInstructors = async (req, res) => {
     }
 }
 
-export { getEvents, getCourses, getVacancies, getInstructors };
+const getGraduates = async (req, res) => {
+    try {
+        const graduates = await Graduate.find();
+        res.status(200).json(graduates);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export default { getEvents, getCourses, getVacancies, getInstructors, getGraduates };

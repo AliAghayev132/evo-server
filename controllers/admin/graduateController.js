@@ -24,7 +24,7 @@ const addGraduate = async (req, res) => {
         const image = req?.files?.image;
 
         if (!image) {
-            return res.status(400).json({ success: false, message: MessagesService.error.E404 });
+            return res.status(400).json({ success: false, message: MessagesService.error.E406 });
         }
 
         const newGraduate = new Graduate(req.body);

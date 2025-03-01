@@ -139,6 +139,8 @@ const getAllInstructorsIncludingDeleted = async (req, res) => {
     }
 };
 
+
+
 export default {
     addInstructor,
     editInstructor,

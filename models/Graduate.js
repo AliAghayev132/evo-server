@@ -22,6 +22,10 @@ const graduateSchema = new Schema({
         trim: true,
         maxlength: 100
     },
+    employer: {
+        type: String,
+        required: true,
+    },
     comment: {
         type: String,
         required: true,
