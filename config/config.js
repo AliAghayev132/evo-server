@@ -4,7 +4,7 @@ dotenv.config();
 
 const config = {
     development: {
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 3101,
         db: {
             host: process.env.DB_HOST || 'localhost',
             name: process.env.DB_NAME || 'mydatabase_name',
@@ -22,4 +22,9 @@ const corsConfig = {
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization", "Content-Type"],
 }
+
+console.log(config);
+
+
+
 export { config, corsConfig };
