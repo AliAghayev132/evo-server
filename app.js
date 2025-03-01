@@ -44,10 +44,7 @@ const setupMiddleWares = () => {
     app.use('/public', express.static('public'));
     app.use(express.urlencoded({ extended: true }));
 
-    app.use(express.static(path.join(__dirname, "../evo-client/dist")));
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "../evo-client/dist/index.html"));
-    });
+
 }
 
 const setupRoutes = () => {
@@ -63,6 +60,11 @@ const startApp = async () => {
     setupServices();
     setupRoutes();
     const server = setupServer();
+
+    app.use(express.static(path.join(__dirname, "../evo-client/dist")));
+    app.use("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "../evo-client/dist/index.html"));
+    });
 
     server.listen(config.development.port, startServer);
 
