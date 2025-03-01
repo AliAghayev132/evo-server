@@ -146,12 +146,25 @@ class ValidatorService {
     static validateVacancy(vacancy) {
         const errors = [];
 
+        if (!vacancy.description || typeof vacancy.description !== 'string') {
+            errors.push("Description is required and must be a string.");
+        }
+        
+        if (!vacancy.title || typeof vacancy.title !== 'string') {
+            errors.push("Title is required and must be a string.");
+        }
+        
         if (!Number.isInteger(vacancy.experienceYears) || vacancy.experienceYears < 0) {
             errors.push("Experience years is required and must be a non-negative integer.");
         }
 
-        if (!Array.isArray(vacancy.requirements) || vacancy.requirements.length > 0 || vacancy.requirements.some(req => typeof req !== 'string')) {
+        if (!Array.isArray(vacancy.requirements) || !vacancy.requirements.length > 0 || vacancy.requirements.some(req => typeof req !== 'string')) {
             errors.push("Requirements must be an array of strings.");
+        }
+
+        
+        if (!Array.isArray(vacancy.duties) || !vacancy.duties.length > 0 || vacancy.duties.some(req => typeof req !== 'string')) {
+            errors.push("Duties must be an array of strings.");
         }
 
         return {
