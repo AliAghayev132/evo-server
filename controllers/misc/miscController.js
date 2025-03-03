@@ -50,4 +50,20 @@ const getGraduates = async (req, res) => {
     }
 }
 
+// const apply = async (req, res) => {
+//     const { email, fullname, phoneNumber, field } = req.body;
+//     if (!email || !fullname || !phoneNumber || !field) {
+//         return res.status(400).json({ message: "All fields are required" });
+//     }
+
+//     try {
+//         // Assuming you have a model to handle applications
+//         const application = new Application({ email, fullname, phoneNumber, field });
+//         await application.save();
+//         res.status(201).json({ message: "Application submitted successfully" });
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//     }
+// }
+
 export default { getEvents, getCourses, getVacancies, getInstructors, getGraduates };

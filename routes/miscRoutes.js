@@ -87,5 +87,8 @@ MiscRouter.get('/instructors', miscController.getInstructors);
  */
 MiscRouter.get('/graduates', miscController.getGraduates);
 
+// TODO: Gələcəldə lazım olsa əlavə et
+// MiscRouter.post('/apply',miscController);
+
 
 export { MiscRouter };

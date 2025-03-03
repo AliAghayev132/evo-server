@@ -23,8 +23,4 @@ const corsConfig = {
     allowedHeaders: ["Authorization", "Content-Type"],
 }
 
-console.log(config);
-
-
-
 export { config, corsConfig };
