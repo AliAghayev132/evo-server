@@ -97,12 +97,12 @@ const instructorSchema = new Schema({
         required: true
     },
     certificates: {
+        default: [],
         type: [String],
-        required: true
     },
     workExperience: {
+        default: [],
         type: [String],
-        required: true
     },
     bio: {
         type: String,
