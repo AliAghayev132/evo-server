@@ -2,25 +2,26 @@
 
 // Models
 import Admin from "#models/Admin.js";
-// import Settings from "#models/Settings.js";
+import Settings from "#models/Settings.js";
 // Services
 import { HashService } from "#services/HashService.js";
 
 
-// const checkSettings = async () => {
-//     try {
-//         const settings = await Settings.findOne({});
-//         if (!settings) {
-//             await Settings.create();
-//             console.log("Settings created");
-//         }
-//         console.log("Settings already exists");
-
-//     } catch (error) {
-//         console.log(error);
-//         throw error;
-//     }
-// }
+const checkSettings = async () => {
+    try {
+        const settings = await Settings.findOne({});
+        if (!settings) {
+            await Settings.create({
+            });
+            console.log("Settings created");
+        } else {
+            console.log("Settings already exists");
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
 
 const checkAdmin = async () => {
     try {
@@ -50,7 +51,7 @@ const checkAdmin = async () => {
 
 
 const firstTimeStart = async () => {
-    // await checkSettings();
+    await checkSettings();
     await checkAdmin();
 };
 

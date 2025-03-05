@@ -14,6 +14,7 @@ import { Schema, Model } from "#constants/variables.js";
  *         - description
  *         - dailyPlans
  *         - organizers
+ *         - locationName
  *       properties:
  *         title:
  *           type: string
@@ -61,6 +62,15 @@ import { Schema, Model } from "#constants/variables.js";
  *           type: boolean
  *           description: Tədbirin silinmiş olub olmadığını belirtir
  *           default: false
+ *         locationName:
+ *           type: string
+ *           description: Tədbirin yeri
+ *         googleMapLink:
+ *           type: string
+ *           description: Tədbirin Google Map linki
+ *         googleFormLink:
+ *           type: string
+ *           description: Tədbirin Google Form linki (isteğe bağlı)
  *       example:
  *         title: "Tech Conference 2025"
  *         slug: "tech-conference-2025"
@@ -78,6 +88,9 @@ import { Schema, Model } from "#constants/variables.js";
  *           }
  *         ]
  *         isDeleted: false
+ *         locationName: "Tech Hall"
+ *         googleMapLink: "http://maps.google.com/..."
+ *         googleFormLink: "http://forms.google.com/..."
  */
 
 const eventSchema = new Schema({
@@ -134,6 +147,17 @@ const eventSchema = new Schema({
     isDeleted: {
         type: Boolean,
         default: false
+    },
+    locationName: {
+        type: String,
+        required: true,
+    },
+    googleMapLink: {
+        type: String,
+        required: false,
+    },
+    googleFormLink: {
+        type: String,
     }
 }, {
     timestamps: true

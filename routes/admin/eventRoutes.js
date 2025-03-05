@@ -70,6 +70,15 @@ const EventRouter = Router();
  *                       type: string
  *                       description: Təşkilatçının şirkəti
  *                 description: Tədbirin təşkilatçıları
+ *               locationName:
+ *                 type: string
+ *                 description: Tədbirin yeri
+ *               googleMapLink:
+ *                 type: string
+ *                 description: Google Map linki
+ *               googleFormLink:
+ *                 type: string
+ *                 description: Google Form linki
  *     responses:
  *       201:
  *         description: Tədbir uğurla əlavə edildi
@@ -165,6 +174,15 @@ const EventRouter = Router();
  *                       type: string
  *                       description: Təşkilatçının şirkəti
  *                 description: Tədbirin təşkilatçıları
+ *               locationName:
+ *                 type: string
+ *                 description: Tədbirin yeri
+ *               googleMapLink:
+ *                 type: string
+ *                 description: Google Map linki
+ *               googleFormLink:
+ *                 type: string
+ *                 description: Google Form linki
  *     responses:
  *       200:
  *         description: Tədbir uğurla düzenlendi

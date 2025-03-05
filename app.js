@@ -75,4 +75,8 @@ const startApp = async () => {
 startApp();
 
 
-// Hello Ilqar V1.0
+
+// TODO: Blog edit
+// NOTE: Blog add method + delete method are working.
+
+

@@ -11,17 +11,22 @@ class FileUploadService {
      * @param {Object} params - Yükleme parametreleri.
      * @param {Object} params.file - Yüklenen dosya nesnesi.
      * @param {string} params.uploadPath - Dosyanın yükleneceği dizin.
+     * @param {array} params.allowedTypes - İzin verilen dosya türleri.
      * @param {string} params.newName - Yeni dosya adı.
      * @returns {Object} - Başarı durumu ve mesaj.
      */
-    static async Upload({ file, uploadPath, newName }) {
+    static async Upload({
+        file,
+        uploadPath,
+        newName,
+        allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"] }) {
         try {
             // Validate the file
             if (!file) {
                 throw new Error(MessagesService.error.E411); // Dosya eksik
             }
 
-            const fileValidation = validateFile(file);
+            const fileValidation = validateFile(file, allowedTypes);
             if (!fileValidation.isValid) {
                 throw new Error(fileValidation.message); // Geçersiz dosya
             }
@@ -29,14 +34,11 @@ class FileUploadService {
             // Handle file renaming
             file.name = handleFileName({ file, newName });
 
-
             // Check and create the upload directory if needed
-            
-            
+
             if (!fs.existsSync(uploadPath)) {
                 fs.mkdirSync(uploadPath, { recursive: true });
             }
-
 
 
             // Move the file to the specified path
@@ -46,7 +48,7 @@ class FileUploadService {
             return { success: true, message: "Dosya başarıyla yüklendi." };
         } catch (error) {
             console.log(error);
-            
+
             return { success: false, message: error.message || Messages.error.E500 };
         }
     }

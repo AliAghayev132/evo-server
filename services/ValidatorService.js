@@ -134,12 +134,24 @@ class ValidatorService {
             errors.push("Description is required and must be a string.");
         }
 
-        if (!Array.isArray(event.dailyPlans) || !event.dailyPlans.length > 0 || event.dailyPlans.some(plan => typeof plan !== 'string')) {
+        if (!Array.isArray(event.dailyPlans) || event.dailyPlans.length === 0 || event.dailyPlans.some(plan => typeof plan !== 'string')) {
             errors.push("Daily plans must be an array of strings.");
         }
 
-        if (!Array.isArray(event.organizers) || !event.organizers.length > 0 || event.organizers.some(org => typeof org.name !== 'string' || typeof org.position !== 'string' || typeof org.company !== 'string')) {
+        if (!Array.isArray(event.organizers) || event.organizers.length === 0 || event.organizers.some(org => typeof org.name !== 'string' || typeof org.position !== 'string' || typeof org.company !== 'string')) {
             errors.push("Organizers must be an array of objects with name, position, and company as strings.");
+        }
+
+        if (!event.locationName || typeof event.locationName !== 'string') {
+            errors.push("Location name is required and must be a string.");
+        }
+
+        if (event.googleMapLink && typeof event.googleMapLink !== 'string') {
+            errors.push("Google Map link must be a string if provided.");
+        }
+
+        if (event.googleFormLink && typeof event.googleFormLink !== 'string') {
+            errors.push("Google Form link must be a string if provided.");
         }
 
         return {
@@ -207,6 +219,54 @@ class ValidatorService {
         return {
             isValid: errors.length === 0,
             message: errors.length > 0 ? errors.join(' ') : "Graduate is valid."
+        };
+    }
+    static validateBlogPost(blogPost) {
+        const errors = [];
+    
+        if (!blogPost.title || typeof blogPost.title !== 'string') {
+            errors.push("Title is required and must be a string.");
+        }
+    
+        if (!blogPost.category || typeof blogPost.category !== 'string') {
+            errors.push("Category is required and must be a string.");
+        }
+    
+        if (!blogPost.content || typeof blogPost.content !== 'string') {
+            errors.push("Content is required and must be a string.");
+        }
+    
+        if (!blogPost.description || typeof blogPost.description !== 'string') {
+            errors.push("Description is required and must be a string.");
+        }
+    
+        return {
+            isValid: errors.length === 0,
+            message: errors.length > 0 ? errors.join(' ') : "Blog post is valid."
+        };
+    }
+    static validateApplication(application) {
+        const errors = [];
+
+        if (!application.fullName || typeof application.fullName !== 'string') {
+            errors.push("Full name is required and must be a string.");
+        }
+
+        if (!application.email || typeof application.email !== 'string') {
+            errors.push("Email is required and must be a string.");
+        }
+
+        if (!application.phoneNumber || typeof application.phoneNumber !== 'string') {
+            errors.push("Phone number is required and must be a string.");
+        }
+
+        if (!application.applicationCategory || typeof application.applicationCategory !== 'string') {
+            errors.push("Application category is required and must be a string.");
+        }
+
+        return {
+            isValid: errors.length === 0,
+            message: errors.length > 0 ? errors.join(' ') : "Application is valid."
         };
     }
 }

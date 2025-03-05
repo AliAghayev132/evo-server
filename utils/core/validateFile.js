@@ -24,7 +24,7 @@
 
 const validateFile = (
     file,
-    allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"],
+    allowedTypes,
     maxSize = 2 * 1024 * 1024
 ) => {
     if (!file) return { isValid: false, message: "Dosya yüklenmedi!" };
