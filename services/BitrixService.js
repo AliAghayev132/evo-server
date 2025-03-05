@@ -16,7 +16,7 @@ class BitrixService {
                         VALUE_TYPE: "WORK"
                     }],
                     COMMENTS: `Seçilmiş kurs: ${data.course}`,
-                    CİNS:"kişi",
+                    Cins:"kişi",
                 }
             };
 
