@@ -12,10 +12,11 @@ class BitrixService {
                         VALUE_TYPE: "WORK"
                     }],
                     PHONE: [{
-                        VALUE: `+994${data.phone}`,
+                        VALUE: `${data.phone}`,
                         VALUE_TYPE: "WORK"
                     }],
-                    COMMENTS: `Seçilmiş kurs: ${data.course}`
+                    COMMENTS: `Seçilmiş kurs: ${data.course}`,
+                    CİNS:"kişi",
                 }
             };
 
